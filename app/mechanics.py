@@ -1,9 +1,5 @@
 from datetime import datetime, date
 
-"""2018-12-18 = 352
-    2018-7-23 = 204
-    2018-4-1 = 91"""
-
 
 def day_of_year(user_date):
     """user_date in form Y-M-D"""

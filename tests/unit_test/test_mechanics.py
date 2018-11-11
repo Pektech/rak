@@ -1,6 +1,10 @@
 import pytest
 from app.mechanics import day_of_year
 
+"""2018-12-18 = 352
+    2018-7-23 = 204
+    2018-4-1 = 91"""
+
 
 @pytest.mark.parametrize(
     "test_date, expected", [("2018-12-18", 352), ("2018-7-23", 204), ("2018-4-1", 91)]

@@ -9,7 +9,7 @@ import logging
 logging.getLogger("flask_ask").setLevel(logging.DEBUG)
 
 
-# from app import alexa
+from app import alexa
 
 # from app import mechanics
 
