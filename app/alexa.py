@@ -54,3 +54,7 @@ def goodbye():
 @ask.session_ended
 def session_ended():
     return "{}", 200
+
+
+def display_info(user_date):
+    pass
