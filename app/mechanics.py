@@ -15,14 +15,10 @@ def create_date_obj(user_date):
     return date_obj
 
 
-def display_date(user_date):
-    date_obj = create_date_obj(user_date)
-    day_num_of_month = date_obj.day
-    day_suffix = get_ordinal(date_obj.day)
+def display_date(user_date_obj):
+    day_suffix = get_ordinal(user_date_obj.day)
     # display_date = date_obj.strftime("%A") + ' the ' + day_suffix + ' of ' + date_obj.strftime("%B")
-    display_date = (
-        f'{date_obj.strftime("%A")} the {day_suffix} of {date_obj.strftime("%B")}'
-    )
+    display_date = f'{user_date_obj.strftime("%A")} the {day_suffix} of {user_date_obj.strftime("%B")}'
 
     return display_date
 

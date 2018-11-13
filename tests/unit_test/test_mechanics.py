@@ -36,4 +36,5 @@ def test_date_object(test_date, expected_day, expected_month):
     ],
 )
 def test_display_date(test_date, expected_display):
+    test_date = create_date_obj(test_date)
     assert display_date(test_date) == expected_display
