@@ -39,7 +39,9 @@ def get_rak(user_date):
     else:
         rak = get_rak_of(_day_of_year)
 
-    return question(rak).display_render(
+    return question(
+        f"<speak><voice name='Salli'><prosody rate='85%'>{rak}</prosody></voice></speak>"
+    ).display_render(
         **_display_format,
         text={
             "primaryText": {"type": "RichText", "text": user_display},
