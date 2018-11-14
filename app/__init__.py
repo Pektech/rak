@@ -10,8 +10,8 @@ logging.getLogger("flask_ask").setLevel(logging.DEBUG)
 
 
 from app import alexa
-
-# from app import mechanics
+from app import display
+from app import mechanics
 
 
 @app.route("/pek")

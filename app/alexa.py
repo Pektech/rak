@@ -1,10 +1,12 @@
 from flask_ask import statement, question
 from flask_ask import session as ask_session, request as ask_request
 from flask import render_template
+from random import choice
 
 from app import ask
-from app.display import display_type, display_round
-from app.mechanics import create_date_obj, display_date
+from app.display import display_type, display_format, display_round, display_rectangle
+from app.mechanics import create_date_obj, display_date, get_rak_of, day_of_year
+from app.data import christmas_calendar
 
 
 @ask.launch
@@ -13,10 +15,11 @@ def set_up_skill():
     ask_session.attributes["last_speech"] = output
     if "DISPLAY_TYPE" not in ask_session.attributes:
         ask_session.attributes["DISPLAY_TYPE"] = display_type()
-    print(ask_session.attributes["DISPLAY_TYPE"])
-    text2 = ask_session.attributes["DISPLAY_TYPE"]
+
+    _display_type = ask_session.attributes["DISPLAY_TYPE"]
+    _display_format = display_format(_display_type)
     return question(output).display_render(
-        **display_round, text={"primaryText": {"type": "RichText", "text": text2}}
+        **_display_format, text={"primaryText": {"type": "RichText", "text": "start"}}
     )
 
 
@@ -26,9 +29,22 @@ def get_rak(user_date):
     user_date_obj = create_date_obj(user_date)
     # get display
     user_display = display_info(user_date_obj)
-    return question("what").display_render(
-        **display_round,
-        text={"primaryText": {"type": "RichText", "text": user_display}},
+    _display_type = ask_session.attributes["DISPLAY_TYPE"]
+    _display_format = display_format(_display_type)
+    _day_of_year = day_of_year(user_date)
+
+    if 335 > int(_day_of_year):
+        random_rak = choice(list(christmas_calendar))
+        rak = f"Sorry its not christmas yet, but here's a sneak peak at the christmas calender. {christmas_calendar[random_rak]}"
+    else:
+        rak = get_rak_of(_day_of_year)
+
+    return question(rak).display_render(
+        **_display_format,
+        text={
+            "primaryText": {"type": "RichText", "text": user_display},
+            "secondaryText": {"type": "RichText", "text": rak},
+        },
     )
 
 
