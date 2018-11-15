@@ -17,10 +17,15 @@ def set_up_skill():
         ask_session.attributes["DISPLAY_TYPE"] = display_type()
 
     _display_type = ask_session.attributes["DISPLAY_TYPE"]
-    _display_format = display_format(_display_type)
-    return question(output).display_render(
-        **_display_format, text={"primaryText": {"type": "RichText", "text": "start"}}
-    )
+    if _display_type == "NO_DISPLAY":
+        return question(output)
+    else:
+        _display_format = display_format(_display_type)
+
+        return question(output).display_render(
+            **_display_format,
+            text={"primaryText": {"type": "RichText", "text": "start"}},
+        )
 
 
 @ask.intent("getRak")
@@ -30,7 +35,7 @@ def get_rak(user_date):
     # get display
     user_display = display_info(user_date_obj)
     _display_type = ask_session.attributes["DISPLAY_TYPE"]
-    _display_format = display_format(_display_type)
+    # _display_format = display_format(_display_type)
     _day_of_year = day_of_year(user_date)
 
     if 335 > int(_day_of_year):
@@ -38,6 +43,11 @@ def get_rak(user_date):
         rak = f"Sorry its not christmas yet, but here's a sneak peak at the christmas calender. {christmas_calendar[random_rak]}"
     else:
         rak = get_rak_of(_day_of_year)
+
+    if _display_type == "NO_DISPLAY":
+        return question(rak)
+    else:
+        _display_format = display_format(_display_type)
 
     return question(
         f"<speak><voice name='Salli'><prosody rate='85%'>{rak}</prosody></voice></speak>"

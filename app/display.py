@@ -28,7 +28,10 @@ display_format_dict = {
 
 
 def display_type():
-    display_type = context.Viewport.shape
+    if "Viewport" not in context:
+        display_type = "NO_DISPLAY"
+    else:
+        display_type = context.Viewport.shape
     return display_type
 
 
