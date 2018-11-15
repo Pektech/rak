@@ -11,4 +11,4 @@ help: <speak><voice name='Salli'>"Each day in December I will give you a new Ran
 
 
 
-error: "Sorry I don't understand. Please say 'Today' or give me a date in december"
+error: <speak><voice name='Salli'>"Sorry I don't understand. Please say 'Today' or give me a date in december"</voice></speak>

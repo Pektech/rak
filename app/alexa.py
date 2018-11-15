@@ -45,12 +45,14 @@ def get_rak(user_date):
         rak = get_rak_of(_day_of_year)
 
     if _display_type == "NO_DISPLAY":
-        return question(rak)
+        return statement(
+            f"<speak><voice name='Salli'><prosody rate='90%'>{rak}</prosody></voice></speak>"
+        )
     else:
         _display_format = display_format(_display_type)
 
-    return question(
-        f"<speak><voice name='Salli'><prosody rate='85%'>{rak}</prosody></voice></speak>"
+    return statement(
+        f"<speak><voice name='Salli'><prosody rate='90%'>{rak}</prosody></voice></speak>"
     ).display_render(
         **_display_format,
         text={
