@@ -4,7 +4,13 @@ from flask import render_template
 from random import choice
 
 from app import ask
-from app.display import display_type, display_format, display_round, display_rectangle
+from app.display import (
+    display_type,
+    display_format,
+    display_round,
+    display_rectangle,
+    display_info,
+)
 from app.mechanics import create_date_obj, display_date, get_rak_of, day_of_year
 from app.data import christmas_calendar
 
@@ -24,7 +30,12 @@ def set_up_skill():
 
         return question(output).display_render(
             **_display_format,
-            text={"primaryText": {"type": "RichText", "text": "start"}},
+            text={
+                "primaryText": {
+                    "type": "RichText",
+                    "text": "Say Today or  Tell me a date in December",
+                }
+            },
         )
 
 
@@ -32,6 +43,8 @@ def set_up_skill():
 def get_rak(user_date):
     # convert date to date object
     user_date_obj = create_date_obj(user_date)
+    if user_date_obj == "error":
+        return fallback()
     # get display
     user_display = display_info(user_date_obj)
     _display_type = ask_session.attributes["DISPLAY_TYPE"]
@@ -46,13 +59,13 @@ def get_rak(user_date):
 
     if _display_type == "NO_DISPLAY":
         return statement(
-            f"<speak><voice name='Salli'><prosody rate='90%'>{rak}</prosody></voice></speak>"
+            f"<speak><voice name='Salli'><prosody rate='95%'>{rak}</prosody></voice></speak>"
         )
     else:
         _display_format = display_format(_display_type)
 
     return statement(
-        f"<speak><voice name='Salli'><prosody rate='90%'>{rak}</prosody></voice></speak>"
+        f"<speak><voice name='Salli'><prosody rate='95%'>{rak}</prosody></voice></speak>"
     ).display_render(
         **_display_format,
         text={
@@ -92,8 +105,3 @@ def goodbye():
 @ask.session_ended
 def session_ended():
     return "{}", 200
-
-
-def display_info(user_date_obj):
-    user_display = display_date(user_date_obj)
-    return user_display

@@ -43,7 +43,13 @@ def test_display_date(test_date, expected_display):
 
 @pytest.mark.parametrize(
     "test_date, expected_rak",
-    [("2018-12-1", "First act of kindness"), ("2018-12-31", "Last day of kindess")],
+    [
+        (
+            "2018-12-1",
+            "Start the season by greeting everyone with a warm Merry Christmas.",
+        ),
+        ("2018-12-31", "New Years Eve. Make a resolution for the new year"),
+    ],
 )
 def test_get_rak_of(test_date, expected_rak):
     _day_of_year = day_of_year(test_date)

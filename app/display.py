@@ -1,4 +1,5 @@
 from flask_ask import context
+from app.mechanics import display_date
 
 
 display_round = dict(
@@ -37,3 +38,8 @@ def display_type():
 
 def display_format(display_type):
     return display_format_dict["type"][display_type]
+
+
+def display_info(user_date_obj):
+    user_display = display_date(user_date_obj)
+    return user_display

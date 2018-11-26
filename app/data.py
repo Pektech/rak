@@ -13,7 +13,7 @@ christmas_calendar = {
     "346": "Make a gift for your teacher or aide",
     "347": "Drop off dog or cat food at an animal shelter",
     "348": "Sing Christmas Carols for your neighbours",
-    "349": "Sort through your toys and donate any that you no longerplay with to charity , local church or library",
+    "349": "Sort through your toys and donate any that you no longer play with to charity, local church or library",
     "350": "Make a winter bird feeder",
     "351": "Make a christmas card for your school crossing guard",
     "352": "Donate a coat or hoodie to charity. Leave a happy note in the pocket",

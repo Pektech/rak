@@ -12,7 +12,10 @@ def day_of_year(user_date):
 
 def create_date_obj(user_date):
     user_date = user_date.replace("-", "")
-    date_obj = datetime.strptime(user_date, "%Y%m%d").date()
+    try:
+        date_obj = datetime.strptime(user_date, "%Y%m%d").date()
+    except ValueError:
+        date_obj = "error"
     return date_obj
 
 

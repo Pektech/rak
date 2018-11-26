@@ -1,9 +1,7 @@
-welcome: <speak><voice name='Salli'>"Welcome to Random Acts of Kindness. The Christmas edition.
-          Say Today to hear today's Act of Kindess or tell me a date in December</voice></speak>
+welcome: <speak><voice name='Salli'><prosody rate='95%'>"Welcome to Random Acts of Kindness. The Christmas edition.
+          Say Today to hear today's Act of Kindess or tell me a date in December</prosody></voice></speak>
 
-help: <speak><voice name='Salli'>"Each day in December I will give you a new Random Act of Kindess. You can also tell me a specific date in December"</voice></speak>
-
-
+help: <speak><voice name='Salli'><prosody rate='95%'>"Each day in December I will give you a new Random Act of Kindess. You can also tell me a specific date in December or say something like 'Next Tuesday'"</prosody></voice></speak>
 
 
 
@@ -11,4 +9,6 @@ help: <speak><voice name='Salli'>"Each day in December I will give you a new Ran
 
 
 
-error: <speak><voice name='Salli'>"Sorry I don't understand. Please say 'Today' or give me a date in december"</voice></speak>
+
+
+error: <speak><voice name='Salli'><prosody rate='95%'>"Sorry I don't understand. Please say 'Today' or tell me a date in december like the 18th of December"</prosody></voice></speak>
