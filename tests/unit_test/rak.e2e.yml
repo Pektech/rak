@@ -1,0 +1,38 @@
+
+#=====================================================================================================================
+#     ______    _ ____  ______        __  _
+#    / __/ /__ (_) / / /_  __/__ ___ / /_(_)__  ___ _
+#   _\ \/  '_// / / /   / / / -_|_-</ __/ / _ \/ _ `/
+#  /___/_/\_\/_/_/_/   /_/  \__/___/\__/_/_//_/\_, /
+#                                             /___/
+#
+# Created by Bespoken
+# Learn more at https://read.bespoken.io/end-to-end/getting-started/
+#
+# Skill name: "RAK Christmas" by Ric Leddy
+# Test scope: Complete skill
+# Description: General End-to-end test suite
+#=====================================================================================================================
+
+
+
+---
+configuration:
+  locale: en-US
+  voiceId: Salli
+  type: e2e
+  virtualDeviceToken: alexa-5ce9f579-43fa-4f3a-8ebe-ceecf149268f
+---
+- test: Invoke skill and ask for Todays RAK.
+- open rack christmas: welcome
+- today == Sorry its not christmas yet
+
+---
+- test: Invoke skill for 18th december
+- open rack christmas
+- 18th of december : donate a coat or hoodie to charity leave a happy note in the pocket
+
+---
+- test: Invoke skill, handle incorrect date
+- open rack christmas
+- 12 18 2018 == Sorry I don't understand. Please say 'Today' or tell me a date in december like the 18th of December

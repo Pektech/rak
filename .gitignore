@@ -5,3 +5,4 @@ zappa_settings.json
 .pytest_cache/
 test_db.db
 .env
+coverage/
