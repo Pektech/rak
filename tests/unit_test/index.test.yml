@@ -1,0 +1,7 @@
+---
+configuration:
+  locale: en-US
+
+---
+- test: Launch request, no further interaction.
+- launch: # LaunchRequest is not an utterance but a request type and reserved word
